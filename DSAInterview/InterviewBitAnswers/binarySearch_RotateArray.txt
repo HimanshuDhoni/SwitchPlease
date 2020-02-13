@@ -1,0 +1,50 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public int search(final List<Integer> A, int B) {
+        int start = 0, end = A.size()-1;
+        
+        while(start<end)   {
+            int mid =(start+end)/2;
+            if(A.get(mid)>A.get(end))   {
+                start = mid+1;
+            }
+            else    {
+                end = mid - 1;
+            }
+            
+        }
+        int pivot = start;
+        //System.out.println("Pivot"+pivot);
+        
+        int ret1 = bs(0,pivot-1,B,A);
+        //System.out.println("ret1"+ret1);
+        if(ret1!=-1)    {
+            return ret1;
+        }
+        int ret2 = bs(pivot,A.size()-1,B,A);
+        //System.out.println("ret2"+ret2);
+        if(ret2!=-1)    {
+            return ret2 ;   
+        }
+        return -1;
+        
+    }
+    public int bs(int start, int end, int B, List<Integer> A)   {
+        while(start<=end)   {
+            int mid = (start+end)/2;
+            //System.out.println(mid);
+            if(B==A.get(mid))   {
+                return mid;
+            }
+            else if (B>A.get(mid))  {
+                start = mid+1;
+            }
+            else    {
+                end = mid-1;
+            }
+        }
+        return -1;
+    }
+    
+}
+

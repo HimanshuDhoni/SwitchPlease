@@ -1,0 +1,29 @@
+public class Solution {
+    public int firstMissingPositive(ArrayList<Integer> A) {
+        int ans = -1;
+        for(int i=0;i<A.size();) {
+            if(A.get(i)<1||i==A.get(i)-1||A.get(i)>A.size())  {
+                
+                //System.out.println(A.get(i));
+                i++;
+                continue;
+            }
+            else    {
+                //System.out.println("Real"+A.get(i));
+                if(A.get(A.get(i)-1)==A.get(i))   {
+                    i++;
+                    continue;
+                }
+                Collections.swap(A,i,A.get(i)-1);
+            }
+            
+        }
+        for(int i=0;i<A.size();++i) {
+            if(A.get(i)!=i+1)   {
+                return i+1;
+            }
+        }
+        return A.size()+1;
+    }
+}
+

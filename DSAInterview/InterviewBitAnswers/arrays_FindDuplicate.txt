@@ -1,0 +1,21 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public int repeatedNumber(final List<Integer> A) {
+        if(A.size()<=1) {
+            return -1;
+        }
+        int n = A.size()-1;
+        boolean[] flag = new boolean[n];
+        
+        for(Integer i:A)    {
+            if(flag[i-1])   {
+                return i;
+            }
+            else    {
+                flag[i-1]=true;
+            }
+        }
+        return -1;
+        
+    }
+}

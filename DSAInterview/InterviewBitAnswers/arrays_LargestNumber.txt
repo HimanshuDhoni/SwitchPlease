@@ -1,0 +1,25 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public String largestNumber(final List<Integer> A) {
+        List<String> arr = new ArrayList<String>() ;
+        for(Integer i:A)    {
+            arr.add(String.valueOf(i));
+        }
+        Collections.sort(arr,new HimComparator());
+        String ans = "";
+        for(String i:arr)   {
+            if("0".equals(i)&&ans.length()!=0)
+                continue;
+            ans+=i;
+        }
+        return ans;
+        
+    }
+}
+
+class HimComparator implements Comparator<String>  {
+    @Override
+    public int compare(String a, String b)    {
+        return (b+a).compareTo(a+b);
+    }
+}

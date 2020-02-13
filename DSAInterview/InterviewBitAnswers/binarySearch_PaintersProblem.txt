@@ -1,0 +1,48 @@
+public class Solution {
+    public int paint(int A, int B, ArrayList<Integer> C) {
+        long maxSingleBoard = Collections.max(C);
+        long start = maxSingleBoard;
+        long end = C.stream().mapToInt(Integer::intValue).sum();
+        //System.out.println(start+" "+end);
+        if(A==1)    {
+            long temp = B*end;
+            return (int)(temp%10000003);
+        }
+        if(A>C.size())  {
+            long temp = start*B;
+            return (int)(temp%10000003);
+        }
+        
+        while(start<end)  {
+            //System.out.println(start+" "+end);
+            long mid = (start+end)/2;
+            if(isPossible(C,mid,A))  {
+                end=mid;
+            }
+            else    {
+                start=mid+1;
+            }
+        }
+        int temp = (int)(start%10000003l);
+        return (temp*B)%10000003;
+    }
+    
+    public boolean isPossible(ArrayList<Integer> t, long maxLen, int A) {
+        int numOfPain = 1;
+        long tempLen = 0;
+        for(int i :t)   {
+            if(tempLen+i>maxLen)    {
+                tempLen = i;
+                numOfPain++;
+            }
+            else    {
+                tempLen+=i;
+            }
+            if(numOfPain>A) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+

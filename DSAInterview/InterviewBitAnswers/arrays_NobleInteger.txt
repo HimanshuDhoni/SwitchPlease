@@ -1,0 +1,20 @@
+public class Solution {
+    public int solve(ArrayList<Integer> A) {
+        Collections.sort(A);
+        int c = -1;
+        for(int i = A.size()-1;i>=0;i--)    {
+            c++;
+            if(c!=0&&A.get(i)==A.get(i+1))  {
+                continue;
+            }
+            if(A.get(i)==c) {
+                return 1;
+            }
+            else if(A.get(i)<c)  {
+                return -1;
+            }
+            
+        }
+        return -1;
+    }
+}

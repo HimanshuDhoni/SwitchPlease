@@ -1,0 +1,52 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public ArrayList<Integer> searchRange(final List<Integer> A, int B) {
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        int start = 0, end = A.size()-1;
+        int mid = 0;
+        while(start<=end)   {
+            mid = (start+end)/2;
+            if(A.get(mid)==B)   {
+                break;
+            }
+            else if(A.get(mid)>B)   {
+                end=mid-1;
+            }
+            else    {
+                start = mid+1;                
+            }
+        }
+        if(start>end)   {
+            ans.add(-1);
+            ans.add(-1);
+            return ans;
+        }
+        int ans1 = mid, ans2 = mid;
+        int t1 = start, t2 = mid-1;
+        int v1 = mid+1, v2 = end;
+        while(t1<=t2) {
+            mid = (t1+t2)/2;
+            if(A.get(mid)==B)   {
+                ans1 = mid;
+                t2 = mid-1;
+            }
+            else    {
+                t1 = mid+1;
+            }
+        }
+        while(v1<=v2)   {
+            mid = (v1+v2)/2;
+            if(A.get(mid)==B)   {
+                ans2=mid;
+                v1 = mid+1;
+            }
+            else    {
+                v2 = mid-1;
+            }
+        }
+        ans.add(ans1);
+        ans.add(ans2);
+        return ans;
+    }
+}
+

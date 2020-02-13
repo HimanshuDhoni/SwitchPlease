@@ -1,0 +1,31 @@
+public class Solution {
+    public String longestCommonPrefix(ArrayList<String> A) {
+        if(A.size()==0)   {
+            return "";
+        }
+        if(A.size()==1)   {
+            return A.get(0);
+        }
+        String ans = "";
+        Boolean done = false;
+        for(int i = 0;i<A.get(0).length();++i)  {
+            char c = A.get(0).charAt(i);
+            for(int j=1;j<A.size();++j) {
+                if(i>A.get(j).length()-1)   {
+                    done = true;
+                    break;
+                }
+                if(A.get(j).charAt(i)!=c)   {
+                    done = true;
+                    break;
+                }
+            }
+            if(done)    {
+                break;
+            }
+            ans+=c;
+        }
+        return ans;
+    }
+}
+

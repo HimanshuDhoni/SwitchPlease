@@ -1,0 +1,18 @@
+public class Solution {
+    int A, B;
+    public int uniquePaths(int A, int B) {
+        this.A = A;
+        this.B = B;
+        return findPath(0,0);
+        
+    }
+    public int findPath(int x, int y)  {
+        //System.out.println(x+" "+y);
+        if(x>A-1||y>B-1)
+            return 0;
+        if(x==A-1&&y==B-1)
+            return 1;
+        return findPath(x+1,y)+findPath(x,y+1);
+    }
+}
+

@@ -1,0 +1,16 @@
+public class Solution {
+    public void arrange(ArrayList<Integer> a) {
+        int n = a.size();
+        for(int i=0;i<n;++i) {
+            a.set(i,getInitialValue(n,i,a)+n*(getInitialValue(n,getInitialValue(n,i,a),a)));
+        }
+        
+        for(int i = 0;i<n;++i)  {
+            //System.out.println(a.get(i));
+            a.set(i,(int)Math.floor(a.get(i)/n));
+        }
+    }
+    public int getInitialValue(int n, int pos, ArrayList<Integer> a)  {
+            return a.get(pos)%n;
+    }
+}

@@ -1,0 +1,21 @@
+public class Solution {
+    public int solve(String A) {
+        int l = A.length();
+        for(int i = 0;i<l-1;++i)  {
+            if(isPalin(A.substring(0,l-i)))    {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public boolean isPalin(String A) {
+        int l = A.length();
+        for(int i = 0, j = l-1;i<j;i++,j--) {
+            if(A.charAt(i)!=A.charAt(j))    {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
